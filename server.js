@@ -61,6 +61,13 @@ function start() {
         });
 }
 
+function addNewEmployee() {}
+function viewAllEmployees() {}
+function addNewDepartment() {}
+function viewAllDepartments() {}
+function addNewRole() {}
+function viewAllRoles() {}
+function updateEmployeeRoles() {}
 
 
 
