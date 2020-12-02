@@ -20,7 +20,57 @@ function start() {
             type: 'list',
             message: 'What would you like to do?',
             name: 'choice',
-            choices: ['View all employees', 'View all departments', 'View all roles', 
-            'Add new employee', 'Add new department', 'Add new role', 'Update employee roles']
+            choices: [
+                'Add new employee', 
+                'View all employees', 
+                'Add new department', 
+                'View all departments', 
+                'Add new role', 
+                'View all roles', 
+                'Update employee roles'
+            ]
         })
+        .then(function(answer) {
+            switch (answer.list) {
+                case 'add a new employee':
+                    addNewEmployee();
+                    break;
+                case 'view all employees':
+                    viewAllEmployees();
+                    break;
+                case 'add a new department':
+                    addNewDepartment();
+                    break;
+                case 'View all departments':
+                    viewAllDepartments();
+                    break;
+                case 'add a new roles':
+                    addNewRole();
+                    break;
+                case 'view all roles':
+                    viewAllRoles();
+                    break;
+                case 'Update employee roles':
+                    updateEmployeeRoles();
+                    break;
+
+                default: 
+                    connection.end();
+                    break;
+            }
+        });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
