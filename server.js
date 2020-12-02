@@ -31,7 +31,7 @@ function start() {
             ]
         })
         .then(function(answer) {
-            switch (answer.list) {
+            switch (answer.choice) {
                 case 'add a new employee':
                     addNewEmployee();
                     break;
