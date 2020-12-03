@@ -17,17 +17,17 @@ connection.connect(function(err) {
 function start() {
     inquirer
         .prompt({
+            name: 'choice',
             type: 'list',
             message: 'What would you like to do?',
-            name: 'choice',
             choices: [
-                'Add new employee', 
-                'View all employees', 
-                'Add new department', 
-                'View all departments', 
-                'Add new role', 
-                'View all roles', 
-                'Update employee roles'
+                'add new employee', 
+                'view all employees', 
+                'update employee roles',
+                'add new department', 
+                'view all departments', 
+                'add new role', 
+                'view all roles'
             ]
         })
         .then(function(answer) {
@@ -61,20 +61,20 @@ function start() {
         });
 }
 
-function addNewEmployee() {}
-function viewAllEmployees() {}
-function addNewDepartment() {}
-function viewAllDepartments() {}
-function addNewRole() {}
-function viewAllRoles() {}
-function updateEmployeeRoles() {}
+// function addNewEmployee() {}
 
+function viewAllEmployees() {
+    connection.query("SELECT * FROM employee", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        connection.end();
+    });
+}
 
-
-
-
-
-
+// function addNewDepartment() {}
+// function viewAllDepartments() {}
+// function addNewRole() {}
+// function viewAllRoles() {}
 
 
 
