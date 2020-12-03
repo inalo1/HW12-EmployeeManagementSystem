@@ -21,37 +21,37 @@ function start() {
             type: 'list',
             message: 'What would you like to do?',
             choices: [
-                'add new employee', 
                 'view all employees', 
+                'add new employee', 
                 'update employee roles',
-                'add new department', 
                 'view all departments', 
-                'add new role', 
-                'view all roles'
+                'add a new department', 
+                'view all roles',
+                'add a new role', 
             ]
         })
         .then(function(answer) {
             switch (answer.choice) {
+                case 'view all employees':
+                    viewAllEmployees();
+                    break;
                 case 'add a new employee':
                     addNewEmployee();
                     break;
-                case 'view all employees':
-                    viewAllEmployees();
+                case 'update employee roles':
+                    updateEmployeeRoles();
+                    break;
+                case 'view all departments':
+                    viewAllDepartments();
                     break;
                 case 'add a new department':
                     addNewDepartment();
                     break;
-                case 'View all departments':
-                    viewAllDepartments();
-                    break;
-                case 'add a new roles':
-                    addNewRole();
-                    break;
                 case 'view all roles':
                     viewAllRoles();
                     break;
-                case 'Update employee roles':
-                    updateEmployeeRoles();
+                case 'add a new role':
+                    addNewRole();
                     break;
 
                 default: 
@@ -62,19 +62,30 @@ function start() {
 }
 
 // function addNewEmployee() {}
-
 function viewAllEmployees() {
-    connection.query("SELECT * FROM employee", function(err, res) {
+    connection.query("SELECT * FROM employee", function(err, data) {
         if (err) throw err;
-        console.table(res);
+        console.table(data);
         connection.end();
     });
 }
 
 // function addNewDepartment() {}
-// function viewAllDepartments() {}
+function viewAllDepartments() {
+    connection.query("SELECT * FROM department", function(err, data) {
+        if (err) throw err;
+        console.table(data);
+        connection.end();
+    });
+}
 // function addNewRole() {}
-// function viewAllRoles() {}
+function viewAllRoles() {
+    connection.query("SELECT * FROM role", function(err, data) {
+        if (err) throw err;
+        console.table(data);
+        connection.end();
+    });
+}
 
 
 
